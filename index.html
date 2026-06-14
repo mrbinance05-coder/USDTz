@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT.z - Tether USD Bridged ZED20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 50%, #0d1117 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .header {
+            background: rgba(38, 161, 123, 0.1);
+            border-bottom: 1px solid rgba(38, 161, 123, 0.3);
+            padding: 20px 0;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .nav {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo-section { display: flex; align-items: center; gap: 12px; }
+        .logo-icon {
+            width: 45px; height: 45px; background: #26A17B; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 18px; color: #fff;
+        }
+        .logo-text { font-size: 24px; font-weight: 700; }
+        .logo-text span { color: #26A17B; }
+        .nav-links a {
+            color: #ccc; text-decoration: none; margin-left: 30px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #26A17B; }
+        .hero {
+            text-align: center; padding: 80px 0 60px;
+        }
+        .hero h1 {
+            font-size: 48px; margin-bottom: 15px;
+            background: linear-gradient(90deg, #26A17B, #4ecdc4);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 20px; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; }
+        .btn {
+            display: inline-block; padding: 14px 35px; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s; margin: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #26A17B, #2dc48d);
+            color: #fff;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(38,161,123,0.4); }
+        .btn-outline {
+            border: 2px solid #26A17B; color: #26A17B; background: transparent;
+        }
+        .btn-outline:hover { background: rgba(38,161,123,0.1); transform: translateY(-2px); }
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px; padding: 50px 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 30px; text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(38,161,123,0.5); }
+        .stat-value { font-size: 28px; font-weight: 700; color: #26A17B; }
+        .stat-label { color: #94a3b8; margin-top: 8px; font-size: 14px; }
+        .about {
+            padding: 60px 0; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+        }
+        .about h2 { font-size: 36px; margin-bottom: 20px; }
+        .about h2 span { color: #26A17B; }
+        .about p { color: #94a3b8; line-height: 1.8; margin-bottom: 15px; }
+        .features { list-style: none; }
+        .features li {
+            padding: 10px 0; color: #ccc; display: flex; align-items: center; gap: 10px;
+        }
+        .features li::before { content: "✅"; }
+        .contract-section {
+            background: rgba(38, 161, 123, 0.08); border: 1px solid rgba(38, 161, 123, 0.2);
+            border-radius: 16px; padding: 40px; text-align: center; margin: 40px 0;
+        }
+        .contract-section h3 { font-size: 22px; margin-bottom: 15px; }
+        .contract-addr {
+            background: rgba(0,0,0,0.4); border: 1px solid rgba(38,161,123,0.3);
+            border-radius: 8px; padding: 15px 25px; font-family: monospace;
+            font-size: 16px; color: #26A17B; word-break: break-all;
+            display: inline-block; margin: 10px 0;
+        }
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 30px 0; text-align: center; color: #64748b;
+        }
+        .social-links { margin: 20px 0; }
+        .social-links a {
+            color: #26A17B; text-decoration: none; margin: 0 15px;
+            font-size: 16px; transition: opacity 0.3s;
+        }
+        .social-links a:hover { opacity: 0.8; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .about { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo-section">
+                    <div class="logo-icon">₮z</div>
+                    <div class="logo-text">USDT<span>.z</span></div>
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#contract">Contract</a>
+                    <a href="https://t.me/USDTz64444" target="_blank">Telegram</a>
+                    <a href="https://bscscan.com/token/0x404c9e5e95b3Ecc65BC7Bf0fa97CD1C92D464444" target="_blank">BscScan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Tether USD Bridged ZED20</h1>
+            <p>A next-generation BEP-20 bridged stablecoin token on BNB Smart Chain, designed for seamless cross-chain interoperability.</p>
+            <a href="https://bscscan.com/token/0x404c9e5e95b3Ecc65BC7Bf0fa97CD1C92D464444" class="btn btn-primary" target="_blank">View on BscScan</a>
+            <a href="https://t.me/USDTz64444" class="btn btn-outline" target="_blank">Join Telegram</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">USDT.z</div>
+                <div class="stat-label">Token Symbol</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1 Trillion</div>
+                <div class="stat-label">Total Supply</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">BEP-20</div>
+                <div class="stat-label">Token Standard</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">BSC</div>
+                <div class="stat-label">BNB Smart Chain</div>
+            </div>
+        </div>
+
+        <div class="about" id="about">
+            <div>
+                <h2>About <span>USDT.z</span></h2>
+                <p>Tether USD Bridged ZED20 (USDT.z) is a BEP-20 token on BNB Smart Chain, built with OpenZeppelin's secure and audited smart contract framework.</p>
+                <p>Designed for the future of decentralized finance, USDT.z provides a reliable and transparent token for the BSC ecosystem.</p>
+            </div>
+            <div>
+                <ul class="features">
+                    <li>Built on BNB Smart Chain (BSC)</li>
+                    <li>OpenZeppelin Verified Smart Contract</li>
+                    <li>18 Decimals Precision</li>
+                    <li>1,000,000,000,000 Total Supply</li>
+                    <li>Fully Transparent & Verified on BscScan</li>
+                    <li>Ownable — Secure Ownership Model</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contract-section" id="contract">
+            <h3>📋 Token Contract Address</h3>
+            <div class="contract-addr">0x404c9e5e95b3Ecc65BC7Bf0fa97CD1C92D464444</div>
+            <p style="color: #94a3b8; margin-top: 15px;">Network: BNB Smart Chain Mainnet | Verified on BscScan ✅</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://t.me/USDTz64444" target="_blank">📱 Telegram</a>
+                <a href="https://bscscan.com/token/0x404c9e5e95b3Ecc65BC7Bf0fa97CD1C92D464444" target="_blank">🔍 BscScan</a>
+            </div>
+            <p>&copy; 2026 USDT.z — Tether USD Bridged ZED20. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
